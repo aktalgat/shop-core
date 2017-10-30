@@ -1,10 +1,10 @@
 task wrapper(type: Wrapper) {
-	gradleVersion = '3.4'
+	gradleVersion = '4.2'
 }
 
 buildscript {
 	ext {
-		springBootVersion = '1.5.1.RELEASE'
+		springBootVersion = '1.5.8.RELEASE'
 	}
 	repositories {
 		mavenCentral()
