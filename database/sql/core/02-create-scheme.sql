@@ -1,0 +1,13 @@
+CREATE SCHEMA IF NOT EXISTS core AUTHORIZATION postgres;
+
+CREATE SEQUENCE core.users_seq
+  INCREMENT 1
+  MINVALUE 2
+  MAXVALUE 9223372036854775807
+  START 2
+  CACHE 1;
+
+CREATE TABLE core.users (
+  id BIGINT DEFAULT nextval('core.users_seq'),
+  name VARCHAR(200)
+);
