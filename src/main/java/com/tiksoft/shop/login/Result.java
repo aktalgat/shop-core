@@ -8,7 +8,7 @@ public class Result {
     private final long id;
     private final String message;
 
-    public Result(long id, String message) {
+    Result(long id, String message) {
         this.id = id;
         this.message = message;
     }
