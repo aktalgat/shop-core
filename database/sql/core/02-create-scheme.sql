@@ -1,13 +1,16 @@
+-- scheme for core
+DROP SCHEMA IF EXISTS core CASCADE;
 CREATE SCHEMA IF NOT EXISTS core AUTHORIZATION postgres;
 
-CREATE SEQUENCE core.users_seq
-  INCREMENT 1
-  MINVALUE 2
-  MAXVALUE 9223372036854775807
-  START 2
-  CACHE 1;
+-- tables for core
+DROP TABLE IF EXISTS core.users;
+DROP SEQUENCE IF EXISTS core.users_seq;
+
+CREATE SEQUENCE core.users_seq INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1;
 
 CREATE TABLE core.users (
-  id BIGINT DEFAULT nextval('core.users_seq'),
-  name VARCHAR(200)
+  id BIGINT DEFAULT nextval('core.users_seq') NOT NULL,
+  name VARCHAR(200),
+
+  CONSTRAINT pk_users PRIMARY KEY (id)
 );
