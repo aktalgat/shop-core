@@ -1,4 +1,4 @@
-package com.tiksoft.login;
+package com.tiksoft.shop.login;
 
 /**
  * Created by Talgat on 25.02.2017.
