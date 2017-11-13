@@ -1,4 +1,4 @@
-package com.tiksoft.shop.security;
+package com.tiksoft.shop.rest.security;
 
 public class JwtAuthenticationRequest {
     private String username;

@@ -1,4 +1,4 @@
-package com.tiksoft.shop.security;
+package com.tiksoft.shop.rest.security;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;

@@ -1,7 +1,8 @@
-package com.tiksoft.shop.security;
+package com.tiksoft.shop.rest.security;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -16,15 +17,11 @@ import java.io.IOException;
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
     private final Log logger = LogFactory.getLog(this.getClass());
 
+    @Autowired
     private TokenHelper tokenHelper;
 
+    @Autowired
     private UserDetailsService userDetailsService;
-
-    public TokenAuthenticationFilter(TokenHelper tokenHelper, UserDetailsService userDetailsService) {
-        this.tokenHelper = tokenHelper;
-        this.userDetailsService = userDetailsService;
-    }
-
 
     @Override
     public void doFilterInternal(
@@ -35,7 +32,7 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
         String username;
         String authToken = tokenHelper.getToken(request);
-
+        logger.info("user { " + authToken + "}");
         if (authToken != null) {
             // get username from token
             username = tokenHelper.getUsernameFromToken(authToken);

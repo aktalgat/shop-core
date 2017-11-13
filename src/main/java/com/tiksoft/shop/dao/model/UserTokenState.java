@@ -1,4 +1,4 @@
-package com.tiksoft.shop.model;
+package com.tiksoft.shop.dao.model;
 
 /**
  * Created by fan.jin on 2016-10-17.

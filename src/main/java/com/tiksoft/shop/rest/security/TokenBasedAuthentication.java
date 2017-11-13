@@ -1,4 +1,4 @@
-package com.tiksoft.shop.security;
+package com.tiksoft.shop.rest.security;
 
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;

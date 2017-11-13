@@ -1,6 +1,6 @@
-package com.tiksoft.shop.repository;
+package com.tiksoft.shop.dao.repository;
 
-import com.tiksoft.shop.model.User;
+import com.tiksoft.shop.dao.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

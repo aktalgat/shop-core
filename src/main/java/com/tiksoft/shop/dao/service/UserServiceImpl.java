@@ -1,12 +1,11 @@
-package com.tiksoft.shop.service;
+package com.tiksoft.shop.dao.service;
 
-import com.tiksoft.shop.model.User;
-import com.tiksoft.shop.repository.UserRepository;
+import com.tiksoft.shop.dao.repository.UserRepository;
+import com.tiksoft.shop.dao.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 @Service

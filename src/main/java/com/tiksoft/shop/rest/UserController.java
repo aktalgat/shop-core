@@ -1,7 +1,7 @@
 package com.tiksoft.shop.rest;
 
-import com.tiksoft.shop.model.User;
-import com.tiksoft.shop.service.UserService;
+import com.tiksoft.shop.dao.model.User;
+import com.tiksoft.shop.dao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;

@@ -1,8 +1,7 @@
-package com.tiksoft.shop.service;
+package com.tiksoft.shop.dao.service;
 
-import com.tiksoft.shop.model.User;
+import com.tiksoft.shop.dao.model.User;
 
-import java.nio.file.AccessDeniedException;
 import java.util.List;
 
 /**

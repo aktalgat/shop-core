@@ -1,4 +1,4 @@
-package com.tiksoft.shop.model;
+package com.tiksoft.shop.dao.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;

@@ -1,7 +1,7 @@
-package com.tiksoft.shop.security;
+package com.tiksoft.shop.rest.security;
 
 import com.tiksoft.shop.common.TimeProvider;
-import com.tiksoft.shop.model.User;
+import com.tiksoft.shop.dao.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

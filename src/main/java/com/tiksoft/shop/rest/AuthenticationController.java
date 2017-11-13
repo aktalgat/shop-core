@@ -1,13 +1,12 @@
 package com.tiksoft.shop.rest;
 
 import com.tiksoft.shop.common.DeviceProvider;
-import com.tiksoft.shop.model.User;
-import com.tiksoft.shop.model.UserTokenState;
-import com.tiksoft.shop.security.JwtAuthenticationRequest;
-import com.tiksoft.shop.security.TokenHelper;
+import com.tiksoft.shop.dao.model.User;
+import com.tiksoft.shop.dao.model.UserTokenState;
+import com.tiksoft.shop.rest.security.JwtAuthenticationRequest;
+import com.tiksoft.shop.rest.security.TokenHelper;
 import com.tiksoft.shop.service.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mobile.device.Device;
@@ -17,7 +16,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

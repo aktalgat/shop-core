@@ -1,5 +1,8 @@
-package com.tiksoft.shop.security;
+package com.tiksoft.shop.config;
 
+import com.tiksoft.shop.rest.security.RestAuthenticationEntryPoint;
+import com.tiksoft.shop.rest.security.TokenAuthenticationFilter;
+import com.tiksoft.shop.rest.security.TokenHelper;
 import com.tiksoft.shop.service.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +16,6 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -34,11 +36,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
-    /*@Bean
+    @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
-    }*/
+    }
+
+    @Bean
+    public TokenAuthenticationFilter authenticationTokenFilterBean() throws Exception {
+        return new TokenAuthenticationFilter();
+    }
 
     @Autowired
     public void configureGlobal( AuthenticationManagerBuilder auth ) throws Exception {
@@ -67,28 +74,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 ).permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated().and()
-                .addFilterBefore(new TokenAuthenticationFilter(tokenHelper, jwtUserDetailsService), BasicAuthenticationFilter.class);
+                .addFilterBefore(authenticationTokenFilterBean(), BasicAuthenticationFilter.class);
 
         http.csrf().disable();
     }
 
-
     @Override
     public void configure(WebSecurity web) throws Exception {
         // TokenAuthenticationFilter will ignore the below paths
-        web.ignoring().antMatchers(
+        /*web.ignoring().antMatchers(
                 HttpMethod.POST,
                 "/auth/login"
-        );
-        web.ignoring().antMatchers(
-                HttpMethod.GET,
-                "/",
-                "/webjars/**",
-                "/*.html",
-                "/favicon.ico",
-                "/**/*.html",
+        );*/
+            web.ignoring().antMatchers(
+                    HttpMethod.GET,
+                    "/",
+                    "/webjars/**",
+                    "/*.html",
+                    "/favicon.ico",
+                    "/**/*.html",
                 "/**/*.css",
                 "/**/*.js"
-        );
+                );
     }
 }
