@@ -10,22 +10,23 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
     public User findByUsername(String username ) throws UsernameNotFoundException {
-        User u = userRepository.findByUsername( username );
-        return u;
+        return userRepository.findByUsername( username );
     }
 
     public User findById( Long id ) {
-        User u = userRepository.findOne( id );
-        return u;
+        return userRepository.findOne( id );
     }
 
     public List<User> findAll() {
-        List<User> result = userRepository.findAll();
-        return result;
+        return userRepository.findAll();
     }
 }

@@ -32,15 +32,19 @@ public class TokenHelper {
     @Value("${jwt.header}")
     private String AUTH_HEADER;
 
-    static final String AUDIENCE_UNKNOWN = "unknown";
-    static final String AUDIENCE_WEB = "web";
-    static final String AUDIENCE_MOBILE = "mobile";
-    static final String AUDIENCE_TABLET = "tablet";
+    private static final String AUDIENCE_UNKNOWN = "unknown";
+    private static final String AUDIENCE_WEB = "web";
+    private static final String AUDIENCE_MOBILE = "mobile";
+    private static final String AUDIENCE_TABLET = "tablet";
+
+    private final TimeProvider timeProvider;
+
+    private final SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
 
     @Autowired
-    TimeProvider timeProvider;
-
-    private SignatureAlgorithm SIGNATURE_ALGORITHM = SignatureAlgorithm.HS512;
+    public TokenHelper(TimeProvider timeProvider) {
+        this.timeProvider = timeProvider;
+    }
 
     public String getUsernameFromToken(String token) {
         String username;
@@ -154,9 +158,9 @@ public class TokenHelper {
     }
 
     public String getToken( HttpServletRequest request ) {
-        /**
-         *  Getting the token from Authentication header
-         *  e.g Bearer your_token
+        /*
+           Getting the token from Authentication header
+           e.g Bearer your_token
          */
         String authHeader = getAuthHeaderFromHeader( request );
         if ( authHeader != null && authHeader.startsWith("Bearer ")) {

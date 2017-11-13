@@ -2,7 +2,6 @@ package com.tiksoft.shop.config;
 
 import com.tiksoft.shop.rest.security.RestAuthenticationEntryPoint;
 import com.tiksoft.shop.rest.security.TokenAuthenticationFilter;
-import com.tiksoft.shop.rest.security.TokenHelper;
 import com.tiksoft.shop.service.JwtUserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -25,16 +24,20 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final JwtUserDetailsServiceImpl jwtUserDetailsService;
+    private final RestAuthenticationEntryPoint restAuthenticationEntryPoint;
+
+    @Autowired
+    public SecurityConfig(JwtUserDetailsServiceImpl jwtUserDetailsService,
+                          RestAuthenticationEntryPoint restAuthenticationEntryPoint) {
+        this.jwtUserDetailsService = jwtUserDetailsService;
+        this.restAuthenticationEntryPoint = restAuthenticationEntryPoint;
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-    @Autowired
-    private JwtUserDetailsServiceImpl jwtUserDetailsService;
-
-    @Autowired
-    private RestAuthenticationEntryPoint restAuthenticationEntryPoint;
 
     @Bean
     @Override
@@ -52,9 +55,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService( jwtUserDetailsService )
                 .passwordEncoder( passwordEncoder() );
     }
-
-    @Autowired
-    TokenHelper tokenHelper;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

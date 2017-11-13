@@ -22,8 +22,12 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping( value = "/api", produces = MediaType.APPLICATION_JSON_VALUE )
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping( method = GET, value = "/user/{userId}" )
     @PreAuthorize("hasRole('ADMIN')")

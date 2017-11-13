@@ -33,17 +33,19 @@ import java.util.Map;
 @RequestMapping( value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE )
 public class AuthenticationController {
 
-    @Autowired
-    TokenHelper tokenHelper;
+    private final TokenHelper tokenHelper;
+    private final AuthenticationManager authenticationManager;
+    private final JwtUserDetailsServiceImpl userDetailsService;
+    private final DeviceProvider deviceProvider;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtUserDetailsServiceImpl userDetailsService;
-
-    @Autowired
-    private DeviceProvider deviceProvider;
+    public AuthenticationController(DeviceProvider deviceProvider, JwtUserDetailsServiceImpl userDetailsService,
+                                    AuthenticationManager authenticationManager, TokenHelper tokenHelper) {
+        this.deviceProvider = deviceProvider;
+        this.userDetailsService = userDetailsService;
+        this.authenticationManager = authenticationManager;
+        this.tokenHelper = tokenHelper;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(

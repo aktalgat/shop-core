@@ -19,17 +19,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
+    private final Log LOGGER = LogFactory.getLog(getClass());
 
-    protected final Log LOGGER = LogFactory.getLog(getClass());
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UserRepository userRepository;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-
-    //@Autowired
-    //private AuthenticationManager authenticationManager;
+    public JwtUserDetailsServiceImpl(PasswordEncoder passwordEncoder, UserRepository userRepository) {
+        this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
