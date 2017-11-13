@@ -5,6 +5,10 @@ import org.springframework.stereotype.Component;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * Created by Talgat on 2017-11-03.
+ */
+
 @Component
 public class TimeProvider implements Serializable {
 

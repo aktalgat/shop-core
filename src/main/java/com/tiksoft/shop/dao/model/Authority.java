@@ -3,22 +3,20 @@ package com.tiksoft.shop.dao.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.*;
-
 /**
- * Created by fan.jin on 2016-11-03.
+ * Created by Talgat on 2017-11-03.
  */
 
-@Entity
-@Table(name="AUTHORITY")
+//@Entity
+//@Table(name="AUTHORITY")
 public class Authority implements GrantedAuthority {
 
-    @Id
-    @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Id
+  //  @Column(name="id")
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="name")
+    //@Column(name="name")
     private String name;
 
     @Override

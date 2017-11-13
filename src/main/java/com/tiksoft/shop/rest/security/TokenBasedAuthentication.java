@@ -3,6 +3,10 @@ package com.tiksoft.shop.rest.security;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/**
+ * Created by Talgat on 2017-11-03.
+ */
+
 public class TokenBasedAuthentication extends AbstractAuthenticationToken {
 
     private String token;

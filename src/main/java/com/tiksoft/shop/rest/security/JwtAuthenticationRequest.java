@@ -1,5 +1,9 @@
 package com.tiksoft.shop.rest.security;
 
+/**
+ * Created by Talgat on 2017-11-03.
+ */
+
 public class JwtAuthenticationRequest {
     private String username;
     private String password;

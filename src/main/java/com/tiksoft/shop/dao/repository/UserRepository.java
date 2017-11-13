@@ -1,12 +1,18 @@
 package com.tiksoft.shop.dao.repository;
 
 import com.tiksoft.shop.dao.model.User;
-import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
- * Created by fan.jin on 2016-10-15.
+ * Created by Talgat on 2017-11-03.
  */
-public interface UserRepository extends JpaRepository<User, Long> {
+
+public interface UserRepository {
     User findByUsername(String username);
+    User findOne(Long id);
+    List<User> findAll();
+    void save(User user);
+    User findById(Long id);
 }
 

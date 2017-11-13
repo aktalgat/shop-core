@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
 
+/**
+ * Created by Talgat on 2017-11-03.
+ */
+
 @Component
 public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint, Serializable {
 

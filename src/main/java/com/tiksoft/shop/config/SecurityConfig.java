@@ -19,6 +19,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
+/**
+ * Created by Talgat on 2017-11-03.
+ */
+
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -65,12 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
-                        "/webjars/**",
-                        "/*.html",
-                        "/favicon.ico",
-                        "/**/*.html",
-                        "/**/*.css",
-                        "/**/*.js"
+                        "/api/**"
                 ).permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated().and()
@@ -81,20 +80,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        // TokenAuthenticationFilter will ignore the below paths
-        /*web.ignoring().antMatchers(
-                HttpMethod.POST,
-                "/auth/login"
-        );*/
-            web.ignoring().antMatchers(
-                    HttpMethod.GET,
-                    "/",
-                    "/webjars/**",
-                    "/*.html",
-                    "/favicon.ico",
-                    "/**/*.html",
-                "/**/*.css",
-                "/**/*.js"
-                );
+        web.ignoring().antMatchers(
+                HttpMethod.GET,
+                "/",
+                "/api/**"
+            );
     }
 }

@@ -6,6 +6,10 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * Created by Talgat on 2017-11-03.
+ */
+
 @Component
 public class DeviceProvider {
 

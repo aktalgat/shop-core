@@ -14,6 +14,10 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
+/**
+ * Created by Talgat on 2017-11-03.
+ */
+
 @Component
 public class TokenHelper {
 

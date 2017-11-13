@@ -2,12 +2,15 @@ package com.tiksoft.shop.service;
 
 import com.tiksoft.shop.dao.model.User;
 import com.tiksoft.shop.dao.repository.UserRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+/**
+ * Created by Talgat on 2017-11-03.
+ */
 
 @Service
 public class JwtUserDetailsServiceImpl implements UserDetailsService {
