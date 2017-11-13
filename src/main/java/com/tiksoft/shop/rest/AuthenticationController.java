@@ -6,6 +6,7 @@ import com.tiksoft.shop.dao.model.UserTokenState;
 import com.tiksoft.shop.rest.security.JwtAuthenticationRequest;
 import com.tiksoft.shop.rest.security.TokenHelper;
 import com.tiksoft.shop.service.JwtUserDetailsServiceImpl;
+import com.tiksoft.shop.service.UserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -35,11 +36,11 @@ public class AuthenticationController {
 
     private final TokenHelper tokenHelper;
     private final AuthenticationManager authenticationManager;
-    private final JwtUserDetailsServiceImpl userDetailsService;
+    private final UserDetailService userDetailsService;
     private final DeviceProvider deviceProvider;
 
     @Autowired
-    public AuthenticationController(DeviceProvider deviceProvider, JwtUserDetailsServiceImpl userDetailsService,
+    public AuthenticationController(DeviceProvider deviceProvider, UserDetailService userDetailsService,
                                     AuthenticationManager authenticationManager, TokenHelper tokenHelper) {
         this.deviceProvider = deviceProvider;
         this.userDetailsService = userDetailsService;
@@ -100,7 +101,7 @@ public class AuthenticationController {
     @RequestMapping(value = "/change-password", method = RequestMethod.POST)
     @PreAuthorize("hasRole('USER')")
     public ResponseEntity<?> changePassword(@RequestBody PasswordChanger passwordChanger) {
-        userDetailsService.changePassword(passwordChanger.oldPassword, passwordChanger.newPassword, authenticationManager);
+        userDetailsService.changePassword(passwordChanger.oldPassword, passwordChanger.newPassword);
         Map<String, String> result = new HashMap<>();
         result.put( "result", "success" );
         return ResponseEntity.accepted().body(result);
