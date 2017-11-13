@@ -1,5 +1,5 @@
 echo off
-REM runscript.bat shop E:\\pssql yourdbpass > log.txt 2>&1
+REM runscript.bat shop C:\\Users\\talgat\\projects\\java\\shop\\database\\sql superpass > log.txt 2>&1
 
 set dbname=%1
 set scriptroot=%2
