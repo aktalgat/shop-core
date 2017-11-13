@@ -1,7 +1,7 @@
 package com.tiksoft.shop.rest;
 
 import com.tiksoft.shop.dao.model.User;
-import com.tiksoft.shop.dao.repository.UserRepository;
+import com.tiksoft.shop.dao.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -22,23 +22,23 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 @RequestMapping( value = "/api", produces = MediaType.APPLICATION_JSON_VALUE )
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping( method = GET, value = "/user/{userId}" )
     @PreAuthorize("hasRole('ADMIN')")
     public User loadById(@PathVariable Long userId ) {
-        return this.userRepository.findById(userId);
+        return this.userService.findById(userId);
     }
 
     @RequestMapping( method = GET, value= "/user/all")
     @PreAuthorize("hasRole('ADMIN')")
     public List<User> loadAll() {
-        return this.userRepository.findAll();
+        return this.userService.findAll();
     }
 
 
@@ -50,6 +50,6 @@ public class UserController {
     @RequestMapping("/whoami")
     @PreAuthorize("hasRole('USER')")
     public User user(Principal user) {
-        return this.userRepository.findByUsername(user.getName());
+        return this.userService.findByUsername(user.getName());
     }
 }

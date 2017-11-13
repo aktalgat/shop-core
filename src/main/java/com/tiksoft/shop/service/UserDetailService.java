@@ -2,6 +2,7 @@ package com.tiksoft.shop.service;
 
 import com.tiksoft.shop.dao.model.User;
 import com.tiksoft.shop.dao.repository.UserRepository;
+import com.tiksoft.shop.dao.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
