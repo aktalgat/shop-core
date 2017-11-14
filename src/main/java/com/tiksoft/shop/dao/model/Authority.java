@@ -7,16 +7,8 @@ import org.springframework.security.core.GrantedAuthority;
  * Created by Talgat on 2017-11-03.
  */
 
-//@Entity
-//@Table(name="AUTHORITY")
 public class Authority implements GrantedAuthority {
-
-//    @Id
-  //  @Column(name="id")
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    //@Column(name="name")
     private String name;
 
     public Authority(String name) {

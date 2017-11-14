@@ -1,5 +1,6 @@
 package com.tiksoft.shop.dao.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.joda.time.DateTime;
 import org.springframework.security.core.GrantedAuthority;
@@ -36,6 +37,8 @@ public class User implements UserDetails {
     private String phoneNumber;
     private boolean enabled;
     private List<Authority> authorities;
+
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
     private Timestamp lastPasswordResetDate;
 
     public Long getId() {
@@ -60,7 +63,7 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         Timestamp now = new Timestamp(DateTime.now().getMillis());
-        this.setLastPasswordResetDate( now );
+        this.setLastPasswordResetDate(now);
         this.password = password;
     }
 
@@ -124,17 +127,6 @@ public class User implements UserDetails {
 
     @Override
     public String toString() {
-        /*private Long id;
-        private String username;
-
-        @JsonIgnore
-        private String password;
-
-        private String firstName;
-        private String lastName;
-        private String email;
-        private String phoneNumber;
-        private boolean enabled;*/
         return "User: {id: " + id + ", username: " + username + ", firstName: " + firstName + ", lastName: " + lastName
                 + ", email: " + email + ", phoneNumber: " + phoneNumber + ", enabled: " + enabled + ", authority: "
                 + authorities + "}";
