@@ -19,7 +19,8 @@ import java.io.IOException;
  */
 
 public class TokenAuthenticationFilter extends OncePerRequestFilter {
-    private final Log logger = LogFactory.getLog(this.getClass());
+
+    private final Log log = LogFactory.getLog(this.getClass());
 
     @Autowired
     private TokenHelper tokenHelper;
@@ -36,15 +37,17 @@ public class TokenAuthenticationFilter extends OncePerRequestFilter {
 
         String username;
         String authToken = tokenHelper.getToken(request);
-        logger.info("user { " + authToken + "}");
+        log.info("auth token: " + authToken);
         if (authToken != null) {
             // get username from token
             username = tokenHelper.getUsernameFromToken(authToken);
+            log.info("user name: " + username);
             if (username != null) {
                 // get user
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 if (tokenHelper.validateToken(authToken, userDetails)) {
                     // create authentication
+                    log.info("user token validated");
                     TokenBasedAuthentication authentication = new TokenBasedAuthentication(userDetails);
                     authentication.setToken(authToken);
                     SecurityContextHolder.getContext().setAuthentication(authentication);

@@ -19,6 +19,10 @@ public class Authority implements GrantedAuthority {
     //@Column(name="name")
     private String name;
 
+    public Authority(String name) {
+        this.name = name;
+    }
+
     @Override
     public String getAuthority() {
         return name;
@@ -42,4 +46,8 @@ public class Authority implements GrantedAuthority {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "role: " + name;
+    }
 }

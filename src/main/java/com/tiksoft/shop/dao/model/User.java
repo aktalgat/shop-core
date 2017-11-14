@@ -13,45 +13,30 @@ import java.util.List;
  * Created by Talgat on 2017-11-03.
  */
 
-//@Entity
-//@Table(name="USERS")
 public class User implements UserDetails {
 
-  //  @Id
-    //@Column(name = "id")
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public User() {}
 
-    //@Column(name = "username")
+    public User(String firstName, String lastName, String phoneNumber, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    private Long id;
     private String username;
 
     @JsonIgnore
-    //@Column(name = "password")
     private String password;
 
-    //@Column(name = "first_name")
     private String firstName;
-
-    //@Column(name = "last_name")
     private String lastName;
-
-    //@Column(name = "email")
     private String email;
-
-    //@Column(name = "phone_number")
     private String phoneNumber;
-
-    //@Column(name = "enabled")
     private boolean enabled;
-
-    //@Column(name = "last_password_reset_date")
-    private Timestamp lastPasswordResetDate;
-
-    //@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    //@JoinTable(name = "user_authority",
-      //      joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-        //    inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
     private List<Authority> authorities;
+    private Timestamp lastPasswordResetDate;
 
     public Long getId() {
         return id;
@@ -135,6 +120,24 @@ public class User implements UserDetails {
 
     public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
         this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+
+    @Override
+    public String toString() {
+        /*private Long id;
+        private String username;
+
+        @JsonIgnore
+        private String password;
+
+        private String firstName;
+        private String lastName;
+        private String email;
+        private String phoneNumber;
+        private boolean enabled;*/
+        return "User: {id: " + id + ", username: " + username + ", firstName: " + firstName + ", lastName: " + lastName
+                + ", email: " + email + ", phoneNumber: " + phoneNumber + ", enabled: " + enabled + ", authority: "
+                + authorities + "}";
     }
 
     @JsonIgnore

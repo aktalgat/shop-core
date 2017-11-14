@@ -150,10 +150,11 @@ public class TokenHelper {
         User user = (User) userDetails;
         final String username = getUsernameFromToken(token);
         final Date created = getIssuedAtDateFromToken(token);
+
         return (
                 username != null &&
-                        username.equals(userDetails.getUsername()) &&
-                        !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate())
+                        username.equals(userDetails.getUsername()) /*&&
+                        !isCreatedBeforeLastPasswordReset(created, user.getLastPasswordResetDate())*/
         );
     }
 

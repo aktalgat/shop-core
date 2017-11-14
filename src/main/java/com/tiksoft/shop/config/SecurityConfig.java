@@ -63,13 +63,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .sessionManagement().sessionCreationPolicy( SessionCreationPolicy.STATELESS ).and()
-                .exceptionHandling().authenticationEntryPoint( restAuthenticationEntryPoint ).and()
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+                .exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
                 .authorizeRequests()
                 .antMatchers(
                         HttpMethod.GET,
                         "/",
-                        "/api/**"
+                        "/goods/**"
                 ).permitAll()
                 .antMatchers("/auth/**").permitAll()
                 .anyRequest().authenticated().and()
@@ -83,7 +83,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         web.ignoring().antMatchers(
                 HttpMethod.GET,
                 "/",
-                "/api/**"
+                "/goods/**"
             );
     }
 }
