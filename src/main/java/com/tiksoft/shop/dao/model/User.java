@@ -16,14 +16,7 @@ import java.util.List;
 
 public class User implements UserDetails {
 
-    public User() {}
-
-    public User(String firstName, String lastName, String phoneNumber, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-    }
+    public User() { }
 
     private Long id;
     private String username;
@@ -38,7 +31,7 @@ public class User implements UserDetails {
     private boolean enabled;
     private List<Authority> authorities;
 
-    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss.SSS", timezone = "Asia/Bishkek")
     private Timestamp lastPasswordResetDate;
 
     public Long getId() {
@@ -128,7 +121,8 @@ public class User implements UserDetails {
     @Override
     public String toString() {
         return "User: {id: " + id + ", username: " + username + ", firstName: " + firstName + ", lastName: " + lastName
-                + ", email: " + email + ", phoneNumber: " + phoneNumber + ", enabled: " + enabled + ", authority: "
+                + ", email: " + email + ", phoneNumber: " + phoneNumber + ", enabled: " + enabled
+                + ", lastPasswordSet: " + lastPasswordResetDate + ", authority: "
                 + authorities + "}";
     }
 
