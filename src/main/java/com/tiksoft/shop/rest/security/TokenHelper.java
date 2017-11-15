@@ -53,7 +53,7 @@ public class TokenHelper {
     public String getUsernameFromToken(String token) {
         String username;
         try {
-            final Claims claims = this.getAllClaimsFromToken(token);
+            final Claims claims = getAllClaimsFromToken(token);
             username = claims.getSubject();
         } catch (Exception e) {
             username = null;
@@ -64,7 +64,7 @@ public class TokenHelper {
     public Date getIssuedAtDateFromToken(String token) {
         Date issueAt;
         try {
-            final Claims claims = this.getAllClaimsFromToken(token);
+            final Claims claims = getAllClaimsFromToken(token);
             issueAt = claims.getIssuedAt();
         } catch (Exception e) {
             issueAt = null;
@@ -75,7 +75,7 @@ public class TokenHelper {
     public String getAudienceFromToken(String token) {
         String audience;
         try {
-            final Claims claims = this.getAllClaimsFromToken(token);
+            final Claims claims = getAllClaimsFromToken(token);
             audience = claims.getAudience();
         } catch (Exception e) {
             audience = null;
