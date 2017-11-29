@@ -85,6 +85,10 @@ public class User implements UserDetails {
         return this.authorities;
     }
 
+    public List<Authority> getAuthorityList() {
+        return this.authorities;
+    }
+
     public String getEmail() {
         return email;
     }

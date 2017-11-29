@@ -74,7 +74,9 @@ public class AuthenticationController {
         String jws = tokenHelper.generateToken( user.getUsername(), device);
         int expiresIn = tokenHelper.getExpiredIn(device);
         // Return the token
-        return ResponseEntity.ok(new UserTokenState(jws, expiresIn));
+        UserTokenState userTokenState = new UserTokenState(jws, expiresIn);
+        userTokenState.setAuthorities(user.getAuthorityList());
+        return ResponseEntity.ok(userTokenState);
     }
 
     @RequestMapping(value = "/refresh", method = RequestMethod.POST)

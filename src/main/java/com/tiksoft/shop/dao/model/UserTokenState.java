@@ -1,5 +1,10 @@
 package com.tiksoft.shop.dao.model;
 
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Collection;
+import java.util.List;
+
 /**
  * Created by Talgat on 2017-11-03.
  */
@@ -7,6 +12,7 @@ package com.tiksoft.shop.dao.model;
 public class UserTokenState {
     private String access_token;
     private Long expires_in;
+    private List<Authority> authorities;
 
     public UserTokenState() {
         this.access_token = null;
@@ -32,5 +38,13 @@ public class UserTokenState {
 
     public void setExpires_in(Long expires_in) {
         this.expires_in = expires_in;
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
+    }
+
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
     }
 }
