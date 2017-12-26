@@ -21,7 +21,7 @@ setlocal enabledelayedexpansion
 "%pgpath%\dropdb.exe" -U postgres  %dbname%
 
 "%pgpath%\psql.exe" -U postgres -c "\i '%scriptroot%/core/01-create-db.sql'"
-"%pgpath%\psql.exe" -U postgres -d %dbname% -c "\i '%scriptroot%/core/02-create-scheme.sql'"
+"%pgpath%\psql.exe" -U postgres -d %dbname% -c "\i '%scriptroot%/core/02-create-schema.sql'"
 
 for /R %scriptroot%\\initial-data\\ %%f in (*.sql) do (
 	set var=%%f

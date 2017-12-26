@@ -21,7 +21,7 @@ sudo su - postgres -c "dropdb $dbname"
 sudo su - postgres -c "echo \"$dbname\""
 
 sudo su - postgres -c "psql -U postgres -c \"\i $scriptroot/core/01-create-db.sql\""
-sudo su - postgres -c "psql -U postgres $dbname -c \"\i $scriptroot/core/02-create-scheme.sql\""
+sudo su - postgres -c "psql -U postgres $dbname -c \"\i $scriptroot/core/02-create-schema.sql\""
 
 for file in $(find $scriptroot/initial-data -name '*.sql' | sort)
 do
