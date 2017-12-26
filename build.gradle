@@ -1,10 +1,10 @@
 task wrapper(type: Wrapper) {
-	gradleVersion = '4.2'
+	gradleVersion = '4.4.1'
 }
 
 buildscript {
 	ext {
-		springBootVersion = '1.5.8.RELEASE'
+		springBootVersion = '1.5.9.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -30,12 +30,16 @@ repositories {
 	mavenCentral()
 }
 
+configurations {
+	compile.exclude module: "spring-boot-starter-tomcat"
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-mobile')
     compile('org.springframework.boot:spring-boot-devtools')
+    compile("org.springframework.boot:spring-boot-starter-undertow")
 
     compile('org.springframework:spring-jdbc')
     compile('org.postgresql:postgresql:42.1.4')
